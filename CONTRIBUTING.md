@@ -17,7 +17,8 @@ There are a couple of conventions that are required to get your changes merged. 
 ## Merge process
 To maintain not only quality but also managability, no changes can be commited to the master branch.
 Every change will happen on a seperate branch and has to be merged via merge request.  
-These merge requests will be taken care of by our code owners.
+These merge requests will be taken care of by our code owners.  
+**Make sure your commit messages are useful and appropriate!**
 
 Please be civil in MR discussions and make sure you read the Code of Conduct below.
 
