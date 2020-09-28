@@ -2,31 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class PlaceBuildingButton : MonoBehaviour
 {
 
-	bool buildingPlacement;
+	bool isButtonEnabled;
 	public TextMeshProUGUI buttonText;
 	// Start is called before the first frame update
 	void Start()
 	{
-		buildingPlacement = true;
+		isButtonEnabled = true;
+		GameEvents.current.onDisableTileCursor += EnableBuildButton;
+		GameEvents.current.onEnableTileCursor += DisableBuildButton;
+
 	}
 
 	private void OnGUI()
 	{
-		if (buildingPlacement)
-		{
-			buttonText.text = "Building placement is ON";
-		}
-		else
+		if (isButtonEnabled)
 		{
 			buttonText.text = "Building placement is OFF";
 		}
+		else
+		{
+			buttonText.text = "Building placement is ON";
+		}
 	}
 
-    public void ToggleText(){
-        buildingPlacement = !buildingPlacement;
-    }
+	void EnableBuildButton()
+	{
+		isButtonEnabled = true;
+		GetComponent<Button>().interactable = true;
+
+	}
+
+	void DisableBuildButton()
+	{
+		isButtonEnabled = false;
+		GetComponent<Button>().interactable = false;
+	}
 }
