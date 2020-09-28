@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System;
 public class CursorTileController : MonoBehaviour
 {
 
@@ -32,7 +33,9 @@ public class CursorTileController : MonoBehaviour
 	void Start()
 	{
 		cam = Camera.main;
-		buildingBeingPlaced = true;
+		buildingBeingPlaced = false;
+		GameEvents.current.onEnableTileCursor += EnableTileCursor;
+		GameEvents.current.onDisableTileCursor += DisableTileCursor;
 	}
 
 	void Update()
@@ -42,7 +45,7 @@ public class CursorTileController : MonoBehaviour
 			overlayTilemap.ClearAllTiles();
 			Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
 			Vector3Int terrainPosition = terrainTilemap.WorldToCell(cam.ScreenToWorldPoint(mousePos));
-			Vector3Int buildingPosition = buildingsTilemap.WorldToCell(cam.ScreenToWorldPoint(mousePos)) + new Vector3Int(0,0,-1);
+			Vector3Int buildingPosition = buildingsTilemap.WorldToCell(cam.ScreenToWorldPoint(mousePos)) + new Vector3Int(0, 0, -1);
 			Vector3Int gridPosition = overlayTilemap.WorldToCell(cam.ScreenToWorldPoint(mousePos));
 			Vector3Int overlayPosition = gridPosition + new Vector3Int(0, 0, -2);
 			if (terrainTilemap.HasTile(terrainPosition))
@@ -54,8 +57,11 @@ public class CursorTileController : MonoBehaviour
 					if (Input.GetMouseButtonDown(0))
 					{
 						buildingsTilemap.SetTile(buildingPosition, buildingTile);
+						GameEvents.current.DisableTileCursor();
+						buildingBeingPlaced = false;
 
 					}
+
 
 				}
 				else
@@ -65,16 +71,24 @@ public class CursorTileController : MonoBehaviour
 				}
 
 			}
-			else
+			if (Input.GetMouseButtonDown(1))
 			{
-				Debug.LogWarning("Can't place tile there!");
+				buildingBeingPlaced = false;
+				GameEvents.current.DisableTileCursor();
 			}
 
 		}
 	}
-
-	public void ToggleBuildingPlacement()
+	void EnableTileCursor()
 	{
-		buildingBeingPlaced = !buildingBeingPlaced;
+		buildingBeingPlaced = true;
 	}
+
+	void DisableTileCursor()
+	{
+		buildingBeingPlaced = false;
+		overlayTilemap.ClearAllTiles();
+
+	}
+
 }
