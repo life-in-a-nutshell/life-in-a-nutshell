@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     public int lumberyard;
     public int house;
     public int farm;
+    public int lab;
     // Start is called before the first frame update
     void Start()
     {
@@ -97,38 +98,18 @@ public class Player : MonoBehaviour
             //Gather Food based on number of farms
             p_foodResources += farm;
 
+            //Gain 1 Science per Research Lab
+            p_science += lab;
+
             //Population must not exceed max population
-            if(p_currentPopulation <= p_maxPopulation)
-            {
-                p_currentPopulation++;
-            }
-            else
+            if(p_currentPopulation >=  p_maxPopulation)
             {
                 //Max population reached
             }
-
-            Debug.Log(p_currentPopulation + " / " + p_maxPopulation);
-            Debug.Log("Food : " + p_foodResources);
+            else
+            {
+                p_currentPopulation++;
+            }
         }
-    }
-
-    //ASSIGN TO BUTTONS TO RUN
-    //Get Wood
-    public void Chop()
-    {
-        lumberyard++;
-    }
-
-    //Build Housing
-    public void Build()
-    {
-        house++;
-        p_maxPopulation += 10;
-    }
-
-    //Get Food
-    public void Cultivate()
-    {
-        farm++;
     }
 }
