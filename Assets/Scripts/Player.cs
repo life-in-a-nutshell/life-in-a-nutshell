@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private int p_maxPopulation;
-
+    
     [SerializeField]
     private int p_energy;
 
