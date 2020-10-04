@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_Script : MonoBehaviour
 {
-    public GameObject Time;
+    public Text Clock;
     public int hour;
     public int min;
 
@@ -36,10 +37,19 @@ public class UI_Script : MonoBehaviour
     void Update()
     {
         //SYSTEM TIME
-        hour = System.DateTime.Now.Hour;
-        min = System.DateTime.Now.Minute;
-        Time.GetComponent<Text>().text = "" + hour + ":" + min;
+        DateTime time = DateTime.Now;
+        string hour = LeadingZero(time.Hour);
+        string minute = LeadingZero(time.Minute);
+        string second = LeadingZero(time.Second);
 
+        Clock.text = hour + ":" + minute + ":" + second;
+
+        string LeadingZero(int n)
+        {
+            return n.ToString().PadLeft(2, '0');
+        }
+
+        //------------------------------------------------------------------------------
 
         //UPPER PANEL TEXT VALUES
         //Food
