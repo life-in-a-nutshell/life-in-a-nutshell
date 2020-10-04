@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 public class UI_Script : MonoBehaviour
 {
-    public Text Clock;
-    public int hour;
-    public int min;
+    public GameObject Time;
+    public string userTime;
 
     public Text Food_V;
     public Text Wood_V;
@@ -37,19 +36,8 @@ public class UI_Script : MonoBehaviour
     void Update()
     {
         //SYSTEM TIME
-        DateTime time = DateTime.Now;
-        string hour = LeadingZero(time.Hour);
-        string minute = LeadingZero(time.Minute);
-        string second = LeadingZero(time.Second);
-
-        Clock.text = hour + ":" + minute + ":" + second;
-
-        string LeadingZero(int n)
-        {
-            return n.ToString().PadLeft(2, '0');
-        }
-
-        //------------------------------------------------------------------------------
+        userTime = System.DateTime.Now.ToString("HH:mm");
+        Time.GetComponent<Text>().text = userTime;
 
         //UPPER PANEL TEXT VALUES
         //Food
