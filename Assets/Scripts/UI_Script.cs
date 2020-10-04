@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class UI_Script : MonoBehaviour
 {
+    public GameObject Time;
+    public int hour;
+    public int min;
+
     public Text Food_V;
     public Text Wood_V;
     public Text Science_V;
@@ -14,6 +18,8 @@ public class UI_Script : MonoBehaviour
     public Text Lumber_amt;
     public Text Lab_amt;
     public Text House_amt;
+
+    public Text info_txt;
 
     public Text Log;
 
@@ -29,7 +35,13 @@ public class UI_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //UPPER PANEL VALUES
+        //SYSTEM TIME
+        hour = System.DateTime.Now.Hour;
+        min = System.DateTime.Now.Minute;
+        Time.GetComponent<Text>().text = "" + hour + ":" + min;
+
+
+        //UPPER PANEL TEXT VALUES
         //Food
         Food_V.GetComponent<Text>();
         Food_V.text = p.FoodResources.ToString();
@@ -46,7 +58,7 @@ public class UI_Script : MonoBehaviour
         Population_V.GetComponent<Text>();
         Population_V.text = p.Pop.ToString() + " / " + p.MaxPop.ToString();
 
-        //-------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------
 
         //BUILDING VALUES
         //Farm
@@ -69,13 +81,15 @@ public class UI_Script : MonoBehaviour
 
         //Log
         Log.GetComponent<Text>();
+
+        //------------------------------------------------------------------------------
     }
 
     //Build Lumber
     public void Chop()
     {
-        p.lumberyard++;
-        LogScript.AddEvent("Lumber has been built!");
+         p.lumberyard++;
+         LogScript.AddEvent("Lumber has been built!");
     }
 
     //Build Housing

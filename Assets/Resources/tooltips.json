@@ -1,0 +1,36 @@
+﻿{
+  "Tips": [
+    {
+      "Object": "Build_Farm_btn",
+      "Text": "Build <b>Farm</b> (Cost: <color=red>10</color> Wood)\nEvery Farm built will add <color=red>1</color> Food"
+    },
+    {
+      "Object": "Build_Lumber_btn",
+      "Text": "Build <b>Lumber</b> (Cost: <color=red>50</color> Wood)\nEvery Lumber built will add <color=red>1</color> Wood"
+    },
+    {
+      "Object": "Build_Lab_btn",
+      "Text": "Build <b>Lab</b> (Cost: <color=red>200</color> Wood)\nEvery Lab built will add <color=red>1</color> Science"
+    },
+    {
+      "Object": "Build_House_btn",
+      "Text": "Build <b>House</b> (Cost: <color=red>100</color> Wood)\nEvery House built will add <color=red>10</color> Max Population"
+    },
+    {
+      "Object": "Food_Img",
+      "Text": "Food Info goes <color=red>Here</color>"
+    },
+    {
+      "Object": "Wood_Img",
+      "Text": "Wood Info goes <color=red>Here</color>"
+    },
+    {
+      "Object": "Science_Img",
+      "Text": "Science Info goes <color=red>Here</color>"
+    },
+    {
+      "Object": "Population_Img",
+      "Text": "Population Info goes <color=red>Here</color>"
+    }
+  ]
+}
