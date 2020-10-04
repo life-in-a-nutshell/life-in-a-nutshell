@@ -11,17 +11,17 @@ public class TreeNode : MonoBehaviour
     public string skillname;
 
     
-    public cost[] c;
+    public cost[] Cost;
 
     public UnityEvent OnUnlock, OnMadeAvaible;
     public bool starternode;
     [Space()]
     [Header("meta")]
-    public TreeNode parentNode;
+    public TreeNode[] parentNode;
     public TreeNode[] childNodes;
     Button button;
     Image img;
-    bool unlocked, avaible;
+    public bool unlocked, avaible;
 
     private void Awake()
     {
@@ -45,8 +45,20 @@ public class TreeNode : MonoBehaviour
 
     public void MakeAvaible()
     {
-        avaible = true;
-        button.interactable = true;
+
+        bool ParentsActive = true;
+        foreach(TreeNode treeNode in parentNode)
+        {
+            if (!treeNode.unlocked)
+            {
+                ParentsActive = false;
+            }
+        }
+        if (ParentsActive)
+        {
+            avaible = true;
+            button.interactable = true;
+        }
     }
 
     public void OnClick()
@@ -66,7 +78,10 @@ public class TreeNode : MonoBehaviour
         if (!starternode)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, parentNode.transform.position);
+            foreach (TreeNode treeNode in parentNode)
+            {
+                Gizmos.DrawLine(transform.position, treeNode.transform.position);
+            }
         }
 
         Gizmos.color = Color.blue;
@@ -88,7 +103,9 @@ public class TreeNode : MonoBehaviour
     public enum resource
     {
         energy,
-        population
+        population,
+        science
+
     }
 
 }
