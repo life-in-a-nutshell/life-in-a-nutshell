@@ -5,7 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private int p_population;
+    private int p_currentPopulation;
+
+    [SerializeField]
+    private int p_maxPopulation;
 
     [SerializeField]
     private int p_energy;
@@ -22,10 +25,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int p_productionResources;
 
-    public int Health
+    public int Pop
     {
-        get { return p_population; }
-        set { p_population = value; }
+        get { return p_currentPopulation; }
+        set { p_currentPopulation = value; }
+    }
+    public int MaxPop
+    {
+        get { return p_maxPopulation; }
+        set { p_maxPopulation = value; }
     }
 
     public int Energy
@@ -53,9 +61,55 @@ public class Player : MonoBehaviour
         get { return p_productionResources; }
         set { p_productionResources = value; }
     }
+
+    public int lumberyard;
+    public int house;
+    public int farm;
+    public int lab;
     // Start is called before the first frame update
     void Start()
     {
+        p_foodResources = 1000;
+        p_currentPopulation = 10;
+        p_maxPopulation = 20;
+
+        StartCoroutine(Refresh());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         
+    }
+
+    //Update stats every 2sec
+    IEnumerator Refresh()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(2f);
+
+            //Consume 2 food per person
+            p_foodResources -= p_currentPopulation * 2;
+
+            //Gather Wood based on number of lumberyards
+            p_productionResources += lumberyard;
+
+            //Gather Food based on number of farms
+            p_foodResources += farm;
+
+            //Gain 1 Science per Research Lab
+            p_science += lab;
+
+            //Population must not exceed max population
+            if(p_currentPopulation >=  p_maxPopulation)
+            {
+                //Max population reached
+            }
+            else
+            {
+                p_currentPopulation++;
+            }
+        }
     }
 }
