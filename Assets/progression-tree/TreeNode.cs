@@ -18,7 +18,7 @@ public class TreeNode : MonoBehaviour
     [Space()]
     [Header("meta")]
     public TreeNode[] parentNode;
-    public TreeNode[] childNodes;
+    public List< TreeNode> childNodes = new List<TreeNode>();
     Button button;
     Image img;
     public bool unlocked, avaible;
@@ -87,10 +87,22 @@ public class TreeNode : MonoBehaviour
         Gizmos.color = Color.blue;
         foreach (TreeNode treeNode in childNodes)
         {
-            Gizmos.DrawLine(transform.position, treeNode.transform.position);
+            if(treeNode == null)
+            {
+                childNodes.Remove(treeNode);
+                continue;
+            }
+            else
+            {
+                Gizmos.DrawLine(transform.position, treeNode.transform.position);
+            }
+
         }
 
     }
+
+
+
 
     [System.Serializable]
     public struct cost
@@ -109,3 +121,4 @@ public class TreeNode : MonoBehaviour
     }
 
 }
+
