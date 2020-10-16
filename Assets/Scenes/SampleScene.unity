@@ -1044,6 +1044,7 @@ RectTransform:
   m_Children:
   - {fileID: 476178985}
   - {fileID: 915164796}
+  - {fileID: 1127574100}
   m_Father: {fileID: 836047758}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1325,8 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Time: {fileID: 698067476}
-  hour: 0
-  min: 0
+  userTime: 
   Food_V: {fileID: 1104036355}
   Wood_V: {fileID: 1256196017}
   Science_V: {fileID: 2142768614}
@@ -2462,17 +2462,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127574099}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1303234465}
-  m_Father: {fileID: 2044464472}
-  m_RootOrder: 4
+  m_Father: {fileID: 436549913}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 88.51001, y: 336}
+  m_AnchoredPosition: {x: 88.454, y: -83.589}
   m_SizeDelta: {x: 177.0127, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127574101
@@ -3490,7 +3490,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029631799}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3574,7 +3574,6 @@ RectTransform:
   - {fileID: 1220710932}
   - {fileID: 2106630956}
   - {fileID: 2029631800}
-  - {fileID: 1127574100}
   m_Father: {fileID: 836047758}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
